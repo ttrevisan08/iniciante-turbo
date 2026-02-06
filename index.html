@@ -520,12 +520,14 @@
 
     <!-- ============================================
          SECAO 6: Acelere sua Evolucao + Conteudo
-         Mockup da plataforma + video de demonstracao
+         Opcao B: Card coeso com mockup flutuando ao
+         lado do texto. Video em faixa separada abaixo.
     ============================================ -->
     <section class="bg-brand-900 py-16 md:py-24">
         <div class="max-w-5xl mx-auto px-4">
+
             <!-- Titulo da secao -->
-            <div class="text-center mb-12 fade-in">
+            <div class="text-center mb-14 fade-in">
                 <h2 class="text-3xl md:text-5xl font-bold uppercase mb-4">
                     Acelere a sua <span class="text-accent-500">evolução no tatame</span>
                 </h2>
@@ -534,33 +536,81 @@
                 </p>
             </div>
 
-            <!-- O QUE VOCE VAI TER ACESSO -->
-            <div class="text-center mb-8 fade-in">
-                <p class="text-gray-400 uppercase tracking-widest text-sm mb-2">O que você vai ter acesso no</p>
-                <h3 class="text-2xl md:text-4xl font-bold uppercase text-accent-500">Iniciante Turbo:</h3>
+            <!-- ============================================
+                 Card coeso: Mockup + Texto + Icones de dispositivos
+                 No desktop: imagem a esquerda, texto a direita
+                 No mobile: imagem em cima, texto embaixo
+            ============================================ -->
+            <div class="bg-brand-700/50 border border-brand-600 rounded-2xl p-6 md:p-10 mb-14 fade-in">
+                <div class="grid md:grid-cols-5 gap-8 md:gap-12 items-center">
+
+                    <!-- Coluna esquerda: Mockup da plataforma (menor, proporcionado) -->
+                    <div class="md:col-span-2 flex justify-center">
+                        <img
+                            src="https://leozadabjj.com.br/wp-content/uploads/2025/11/Design-sem-nome-19-1-1024x1024.png"
+                            alt="Área de membros do Iniciante Turbo - Plataforma de videoaulas"
+                            class="w-56 md:w-full max-w-xs rounded-xl shadow-2xl shadow-accent-500/10"
+                            loading="lazy"
+                            width="1024" height="1024"
+                        >
+                    </div>
+
+                    <!-- Coluna direita: Textos + icones de dispositivos -->
+                    <div class="md:col-span-3">
+                        <p class="text-gray-400 uppercase tracking-widest text-xs mb-1">O que você vai ter acesso no</p>
+                        <h3 class="text-2xl md:text-3xl font-bold uppercase text-accent-500 mb-5">Iniciante Turbo:</h3>
+
+                        <p class="text-gray-300 text-lg mb-6">
+                            Você terá acesso a uma <strong class="text-white">Área de membros exclusiva</strong> para acessar o conteúdo do curso, onde você pode assistir de onde e quando quiser.
+                        </p>
+
+                        <!-- Icones de dispositivos -->
+                        <div class="flex flex-wrap gap-6 mb-6">
+                            <!-- Celular -->
+                            <div class="flex items-center gap-2 text-gray-400">
+                                <svg class="w-6 h-6 text-accent-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"/></svg>
+                                <span class="text-sm font-medium text-white">Celular</span>
+                            </div>
+                            <!-- Tablet -->
+                            <div class="flex items-center gap-2 text-gray-400">
+                                <svg class="w-6 h-6 text-accent-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"/></svg>
+                                <span class="text-sm font-medium text-white">Tablet</span>
+                            </div>
+                            <!-- Notebook -->
+                            <div class="flex items-center gap-2 text-gray-400">
+                                <svg class="w-6 h-6 text-accent-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+                                <span class="text-sm font-medium text-white">Notebook</span>
+                            </div>
+                        </div>
+
+                        <!-- Mini bullets de reforco -->
+                        <div class="space-y-2">
+                            <div class="flex items-center gap-2">
+                                <svg class="w-5 h-5 text-accent-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+                                <span class="text-gray-300 text-sm"><strong class="text-white">+12 módulos</strong> e <strong class="text-white">+90 videoaulas</strong> passo a passo</span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <svg class="w-5 h-5 text-accent-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+                                <span class="text-gray-300 text-sm">Conceitos técnicos de cada situação</span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <svg class="w-5 h-5 text-accent-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+                                <span class="text-gray-300 text-sm">Domine as principais técnicas e construa uma base forte</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
 
-            <!-- Descricao da area de membros -->
-            <div class="text-center mb-10 fade-in">
-                <p class="text-gray-300 text-lg max-w-2xl mx-auto">
-                    Você terá acesso a uma <strong class="text-white">Área de membros exclusiva</strong> para acessar o conteúdo do curso, onde <strong class="text-white">você pode assistir pelo celular, tablet ou notebook</strong> de onde e quando quiser.
-                </p>
+            <!-- ============================================
+                 Video demonstracao da plataforma
+                 Faixa separada, menor, com titulo proprio
+            ============================================ -->
+            <div class="text-center mb-6 fade-in">
+                <p class="text-gray-400 uppercase tracking-widest text-xs mb-1">Veja a plataforma em ação</p>
+                <h3 class="text-xl md:text-2xl font-bold uppercase">Conheça a <span class="text-accent-500">área de membros</span></h3>
             </div>
-
-            <!-- Mockup da plataforma -->
-            <div class="mb-12 fade-in">
-                <img
-                    src="https://leozadabjj.com.br/wp-content/uploads/2025/11/Design-sem-nome-19-1-1024x1024.png"
-                    alt="Área de membros do Iniciante Turbo - Plataforma de videoaulas"
-                    class="mx-auto w-full max-w-lg rounded-xl shadow-2xl"
-                    loading="lazy"
-                    width="1024" height="1024"
-                >
-            </div>
-
-            <!-- Video demonstracao da plataforma -->
-            <!-- NOTA: Mesmo caso do VSL - restricao de dominio Vimeo -->
-            <div class="max-w-3xl mx-auto mb-10 rounded-xl overflow-hidden shadow-xl border border-brand-600 fade-in" id="demoContainer">
+            <div class="max-w-2xl mx-auto mb-14 rounded-xl overflow-hidden shadow-xl border border-brand-600 fade-in" id="demoContainer">
                 <div class="relative w-full" style="padding-top:56.25%;">
                     <iframe
                         id="vimeoDemo"
@@ -582,24 +632,13 @@
                 </div>
             </div>
 
-            <!-- Texto reforco -->
-            <div class="text-center mb-10 fade-in">
-                <p class="text-gray-300 text-lg max-w-2xl mx-auto mb-4">
-                    Você irá <strong class="text-white">aprender os conceitos técnicos de cada situação</strong>, para você não se sentir mais perdido.
-                </p>
-                <p class="text-gray-300 text-lg max-w-2xl mx-auto">
-                    O que você precisa é <strong class="text-white">dominar as principais técnicas</strong> e construir uma base forte no tatame.
-                </p>
-            </div>
-
             <!-- ============================================
                  Carrossel de conteudo do curso (modulos)
-                 Grid horizontal com scroll no mobile
+                 Scroll horizontal com snap
             ============================================ -->
             <div class="mb-8 fade-in">
                 <p class="text-center text-accent-500 text-xl font-bold uppercase mb-6">Veja o que você terá acesso:</p>
-                <div class="flex gap-4 overflow-x-auto pb-4 testimonial-scroll snap-x snap-mandatory">
-                    <!-- Imagens dos modulos do curso (13 slides) -->
+                <div class="flex gap-4 overflow-x-auto pb-4 snap-x snap-mandatory" style="scrollbar-width:none; -ms-overflow-style:none;">
                     <img src="https://leozadabjj.com.br/wp-content/uploads/2025/11/1-1.png" alt="Módulo 1" class="w-64 md:w-72 flex-shrink-0 rounded-lg snap-center" loading="lazy">
                     <img src="https://leozadabjj.com.br/wp-content/uploads/2025/11/2-1.png" alt="Módulo 2" class="w-64 md:w-72 flex-shrink-0 rounded-lg snap-center" loading="lazy">
                     <img src="https://leozadabjj.com.br/wp-content/uploads/2025/11/3-1.png" alt="Módulo 3" class="w-64 md:w-72 flex-shrink-0 rounded-lg snap-center" loading="lazy">
