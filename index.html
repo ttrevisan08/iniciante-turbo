@@ -239,6 +239,52 @@
             transform: translateY(-4px);
             box-shadow: 0 12px 40px rgba(255, 102, 0, 0.15);
         }
+
+        /* ============================================
+           Carrossel de modulos - autoplay infinito
+           Duplicamos os slides e animamos via CSS translateX
+        ============================================ */
+        .modules-wrapper {
+            overflow: hidden;
+            -webkit-mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
+            mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
+        }
+        .modules-track {
+            display: flex;
+            gap: 1rem;
+            animation: modules-scroll 60s linear infinite;
+            width: max-content;
+        }
+        @keyframes modules-scroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+        .modules-track img {
+            flex-shrink: 0;
+            width: 256px;
+            border-radius: 0.5rem;
+        }
+        @media (min-width: 768px) {
+            .modules-track img {
+                width: 288px;
+            }
+        }
+
+        /* Imagem do professor - circulo sem contorno */
+        .professor-img {
+            border-radius: 50%;
+            width: 20rem;
+            height: 20rem;
+            object-fit: cover;
+            object-position: center top;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+        }
+        @media (min-width: 768px) {
+            .professor-img {
+                width: 24rem;
+                height: 24rem;
+            }
+        }
     </style>
 </head>
 
@@ -637,22 +683,38 @@
             ============================================ -->
             <div class="mb-8 fade-in">
                 <p class="text-center text-accent-500 text-xl font-bold uppercase mb-6">Veja o que você terá acesso:</p>
-                <div class="flex gap-4 overflow-x-auto pb-4 snap-x snap-mandatory" style="scrollbar-width:none; -ms-overflow-style:none;">
-                    <img src="https://leozadabjj.com.br/wp-content/uploads/2025/11/1-1.png" alt="Módulo 1" class="w-64 md:w-72 flex-shrink-0 rounded-lg snap-center" loading="lazy">
-                    <img src="https://leozadabjj.com.br/wp-content/uploads/2025/11/2-1.png" alt="Módulo 2" class="w-64 md:w-72 flex-shrink-0 rounded-lg snap-center" loading="lazy">
-                    <img src="https://leozadabjj.com.br/wp-content/uploads/2025/11/3-1.png" alt="Módulo 3" class="w-64 md:w-72 flex-shrink-0 rounded-lg snap-center" loading="lazy">
-                    <img src="https://leozadabjj.com.br/wp-content/uploads/2025/11/4-2.png" alt="Módulo 4" class="w-64 md:w-72 flex-shrink-0 rounded-lg snap-center" loading="lazy">
-                    <img src="https://leozadabjj.com.br/wp-content/uploads/2025/11/5-1.png" alt="Módulo 5" class="w-64 md:w-72 flex-shrink-0 rounded-lg snap-center" loading="lazy">
-                    <img src="https://leozadabjj.com.br/wp-content/uploads/2025/11/6-1.png" alt="Módulo 6" class="w-64 md:w-72 flex-shrink-0 rounded-lg snap-center" loading="lazy">
-                    <img src="https://leozadabjj.com.br/wp-content/uploads/2025/11/7-1.png" alt="Módulo 7" class="w-64 md:w-72 flex-shrink-0 rounded-lg snap-center" loading="lazy">
-                    <img src="https://leozadabjj.com.br/wp-content/uploads/2025/11/8-4.png" alt="Módulo 8" class="w-64 md:w-72 flex-shrink-0 rounded-lg snap-center" loading="lazy">
-                    <img src="https://leozadabjj.com.br/wp-content/uploads/2025/11/9-1.png" alt="Módulo 9" class="w-64 md:w-72 flex-shrink-0 rounded-lg snap-center" loading="lazy">
-                    <img src="https://leozadabjj.com.br/wp-content/uploads/2025/11/10-1.png" alt="Módulo 10" class="w-64 md:w-72 flex-shrink-0 rounded-lg snap-center" loading="lazy">
-                    <img src="https://leozadabjj.com.br/wp-content/uploads/2025/11/11-3.png" alt="Módulo 11" class="w-64 md:w-72 flex-shrink-0 rounded-lg snap-center" loading="lazy">
-                    <img src="https://leozadabjj.com.br/wp-content/uploads/2025/11/12-1.png" alt="Módulo 12" class="w-64 md:w-72 flex-shrink-0 rounded-lg snap-center" loading="lazy">
-                    <img src="https://leozadabjj.com.br/wp-content/uploads/2025/11/13-1.png" alt="Módulo 13" class="w-64 md:w-72 flex-shrink-0 rounded-lg snap-center" loading="lazy">
+                <div class="modules-wrapper">
+                    <div class="modules-track">
+                        <!-- Cards originais -->
+                        <img src="https://leozadabjj.com.br/wp-content/uploads/2025/11/1-1.png" alt="Módulo 1" loading="lazy">
+                        <img src="https://leozadabjj.com.br/wp-content/uploads/2025/11/2-1.png" alt="Módulo 2" loading="lazy">
+                        <img src="https://leozadabjj.com.br/wp-content/uploads/2025/11/3-1.png" alt="Módulo 3" loading="lazy">
+                        <img src="https://leozadabjj.com.br/wp-content/uploads/2025/11/4-2.png" alt="Módulo 4" loading="lazy">
+                        <img src="https://leozadabjj.com.br/wp-content/uploads/2025/11/5-1.png" alt="Módulo 5" loading="lazy">
+                        <img src="https://leozadabjj.com.br/wp-content/uploads/2025/11/6-1.png" alt="Módulo 6" loading="lazy">
+                        <img src="https://leozadabjj.com.br/wp-content/uploads/2025/11/7-1.png" alt="Módulo 7" loading="lazy">
+                        <img src="https://leozadabjj.com.br/wp-content/uploads/2025/11/8-4.png" alt="Módulo 8" loading="lazy">
+                        <img src="https://leozadabjj.com.br/wp-content/uploads/2025/11/9-1.png" alt="Módulo 9" loading="lazy">
+                        <img src="https://leozadabjj.com.br/wp-content/uploads/2025/11/10-1.png" alt="Módulo 10" loading="lazy">
+                        <img src="https://leozadabjj.com.br/wp-content/uploads/2025/11/11-3.png" alt="Módulo 11" loading="lazy">
+                        <img src="https://leozadabjj.com.br/wp-content/uploads/2025/11/12-1.png" alt="Módulo 12" loading="lazy">
+                        <img src="https://leozadabjj.com.br/wp-content/uploads/2025/11/13-1.png" alt="Módulo 13" loading="lazy">
+                        <!-- Cards duplicados para loop infinito seamless -->
+                        <img src="https://leozadabjj.com.br/wp-content/uploads/2025/11/1-1.png" alt="Módulo 1" loading="lazy" aria-hidden="true">
+                        <img src="https://leozadabjj.com.br/wp-content/uploads/2025/11/2-1.png" alt="Módulo 2" loading="lazy" aria-hidden="true">
+                        <img src="https://leozadabjj.com.br/wp-content/uploads/2025/11/3-1.png" alt="Módulo 3" loading="lazy" aria-hidden="true">
+                        <img src="https://leozadabjj.com.br/wp-content/uploads/2025/11/4-2.png" alt="Módulo 4" loading="lazy" aria-hidden="true">
+                        <img src="https://leozadabjj.com.br/wp-content/uploads/2025/11/5-1.png" alt="Módulo 5" loading="lazy" aria-hidden="true">
+                        <img src="https://leozadabjj.com.br/wp-content/uploads/2025/11/6-1.png" alt="Módulo 6" loading="lazy" aria-hidden="true">
+                        <img src="https://leozadabjj.com.br/wp-content/uploads/2025/11/7-1.png" alt="Módulo 7" loading="lazy" aria-hidden="true">
+                        <img src="https://leozadabjj.com.br/wp-content/uploads/2025/11/8-4.png" alt="Módulo 8" loading="lazy" aria-hidden="true">
+                        <img src="https://leozadabjj.com.br/wp-content/uploads/2025/11/9-1.png" alt="Módulo 9" loading="lazy" aria-hidden="true">
+                        <img src="https://leozadabjj.com.br/wp-content/uploads/2025/11/10-1.png" alt="Módulo 10" loading="lazy" aria-hidden="true">
+                        <img src="https://leozadabjj.com.br/wp-content/uploads/2025/11/11-3.png" alt="Módulo 11" loading="lazy" aria-hidden="true">
+                        <img src="https://leozadabjj.com.br/wp-content/uploads/2025/11/12-1.png" alt="Módulo 12" loading="lazy" aria-hidden="true">
+                        <img src="https://leozadabjj.com.br/wp-content/uploads/2025/11/13-1.png" alt="Módulo 13" loading="lazy" aria-hidden="true">
+                    </div>
                 </div>
-                <p class="text-center text-gray-500 text-sm mt-2 md:hidden">Arraste para ver mais &rarr;</p>
             </div>
         </div>
     </section>
@@ -828,11 +890,10 @@
                 <!-- Foto do professor -->
                 <div class="fade-in order-1 md:order-2 flex justify-center">
                     <img
-                        src="https://leozadabjj.com.br/wp-content/uploads/2025/08/Design-sem-nome-3.png"
+                        src="Leonardo Brocca.png"
                         alt="Leonardo Brocca - Professor Faixa Preta de Jiu-Jitsu"
-                        class="w-80 md:w-96 rounded-2xl shadow-2xl border-2 border-accent-500/20"
+                        class="professor-img"
                         loading="lazy"
-                        width="1024" height="1024"
                     >
                 </div>
             </div>
