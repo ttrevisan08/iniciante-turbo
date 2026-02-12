@@ -1,5 +1,43 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+<!--
+    =====================================================================
+    INICIANTE TURBO - Landing Page
+    =====================================================================
+    Projeto:    Curso online de Jiu-Jitsu (BJJ) do Leonardo Brocca
+    Dominio:    leozadabjj.com.br
+    Hospedagem: Vercel (deploy automatico via GitHub: ttrevisan08/iniciante-turbo)
+    Pagamento:  Kiwify (https://pay.kiwify.com.br/gXrfIjn)
+
+    INFRAESTRUTURA:
+    - DNS aponta para Vercel. O WordPress/Hostgator ainda existe no servidor
+      mas NAO serve mais este site. As imagens foram migradas para /images/
+      local justamente porque o DNS nao aponta mais para a Hostgator.
+    - Os depoimentos (secao 8) ainda usam URLs do wp-content na Hostgator.
+      Se pararem de funcionar, baixar do cPanel e migrar para /images/ tambem.
+
+    IMAGENS (pasta /images/):
+    - Todas as imagens estavam em leozadabjj.com.br/wp-content/uploads/
+      mas ao migrar o DNS para a Vercel, as URLs passaram a retornar 403.
+    - As imagens foram baixadas do cPanel (Hostgator) > public_html > wp-content > uploads
+    - ATENCAO: No WordPress, versoes com sufixo (-1, -2, etc) sao redimensionamentos.
+      Sempre baixar a versao com maior sufixo ou sem sufixo (ex: 4-2.png, nao 4-1.png).
+    - Formato padrao dos modulos: 320x480px (ratio 2:3 vertical)
+
+    VIDEOS (Vimeo):
+    - VSL (hero): vimeo.com/1125385659 - formato 16:9 (padding-top: 56.25%)
+    - Demo plataforma: vimeo.com/1140155153 - formato 9:16 vertical (padding-top: 177.78%)
+    - Ambos tem restricao de dominio no Vimeo - so carregam em leozadabjj.com.br
+    - Em localhost/outros dominios, o fallback aparece com link direto pro Vimeo
+
+    TRACKING:
+    - Google Tag Manager: GTM-WZTWKVCL
+    - Google Ads: AW-10899334641
+    - Meta Pixel: 1825567398389755
+
+    STACK: HTML unico + TailwindCSS (CDN) + Vimeo Player API + JS vanilla
+    =====================================================================
+-->
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -43,6 +81,8 @@
 
     <!-- ============================================
          Favicon
+         Origem: cPanel > public_html > wp-content > uploads > 2025/11/
+         Nomes originais: cropped-Gemini_Generated_Image_u3gia9u3gia9u3gi-32x32.png e -180x180.png
     ============================================ -->
     <link rel="icon" href="images/favicon-32x32.png" sizes="32x32">
     <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
@@ -168,7 +208,13 @@
 
         /* ============================================
            Carrossel de depoimentos - autoplay infinito
-           Duplicamos os slides e animamos via CSS translateX
+           - Funciona com CSS puro: duplicamos os 7 slides no HTML e
+             translateX(-50%) faz o loop seamless ao chegar na copia.
+           - animation-play-state: running no hover = NUNCA pausa.
+             Isso foi intencional (pedido do cliente). Para reativar
+             pausa no hover, trocar "running" por "paused".
+           - Duracao: 40s. Ajustar se mudar numero de slides.
+           - Fade nas bordas: mask-image gradient no .testimonial-wrapper
         ============================================ */
         .testimonial-track {
             display: flex;
@@ -177,7 +223,7 @@
             width: max-content;
         }
         .testimonial-track:hover {
-            animation-play-state: running;
+            animation-play-state: running; /* running = nao pausa no hover */
         }
         @keyframes testimonial-scroll {
             0% { transform: translateX(0); }
@@ -242,7 +288,10 @@
 
         /* ============================================
            Carrossel de modulos - autoplay infinito
-           Duplicamos os slides e animamos via CSS translateX
+           Mesma tecnica do carrossel de depoimentos.
+           - 13 modulos duplicados no HTML para loop seamless
+           - Imagens padrao: 320x480px (2:3 vertical)
+           - Duracao: 60s (mais lento que depoimentos pois tem mais cards)
         ============================================ */
         .modules-wrapper {
             overflow: hidden;
@@ -648,8 +697,12 @@
             </div>
 
             <!-- ============================================
-                 Video demonstracao da plataforma
-                 Faixa separada, menor, com titulo proprio
+                 Video demonstracao da plataforma (Vimeo 1140155153)
+                 - VIDEO VERTICAL (gravado no celular): aspect ratio 9:16
+                 - Container: max-w-sm (estreito) + padding-top: 177.78%
+                 - Se trocar por video horizontal, mudar para:
+                   max-w-2xl + padding-top: 56.25% (16:9)
+                 - Tem restricao de dominio no Vimeo (so roda em leozadabjj.com.br)
             ============================================ -->
             <div class="text-center mb-6 fade-in">
                 <p class="text-gray-400 uppercase tracking-widest text-xs mb-1">Veja a plataforma em ação</p>
@@ -679,7 +732,10 @@
 
             <!-- ============================================
                  Carrossel de conteudo do curso (modulos)
-                 Scroll horizontal com snap
+                 - 13 cards + 13 duplicados = 26 imagens no HTML
+                 - Todas em images/modulo-N.png (320x480px)
+                 - Nomes originais no WordPress eram diferentes (1-1.png, 4-2.png, etc)
+                 - Se adicionar/remover modulos, duplicar tambem no bloco aria-hidden
             ============================================ -->
             <div class="mb-8 fade-in">
                 <p class="text-center text-accent-500 text-xl font-bold uppercase mb-6">Veja o que você terá acesso:</p>
@@ -806,10 +862,12 @@
 
             <!-- ============================================
                  Carrossel de depoimentos com autoplay infinito (CSS puro)
-                 - Imagens duplicadas para criar loop seamless
-                 - Pausa ao hover para o usuario ler
-                 - Mascara de fade nas bordas laterais
-                 - Imagens centralizadas no container
+                 - 7 imagens + 7 duplicadas = 14 no HTML
+                 - NAO pausa no hover (intencional, pedido do cliente)
+                 - ATENCAO: estas imagens ainda apontam para URLs do WordPress
+                   (leozadabjj.com.br/wp-content/uploads/). Se pararem de carregar,
+                   baixar do cPanel e mover para /images/ como foi feito com as demais.
+                 - Mascara de fade nas bordas laterais (mask-image no wrapper)
             ============================================ -->
             <div class="testimonial-wrapper">
                 <div class="testimonial-track">
@@ -1224,9 +1282,17 @@
 
     <!-- ============================================
          JAVASCRIPT
-         - Vimeo player (unmute overlay)
-         - IntersectionObserver (fade-in animations)
-         - Sticky CTA toggle (mobile)
+         - Vimeo Player API: controle do VSL (unmute overlay) e demo
+         - IntersectionObserver: animacoes de fade-in ao scroll
+         - Sticky CTA: botao fixo no mobile (aparece apos 600px scroll)
+
+         IMPORTANTE sobre Vimeo:
+         - Os 2 videos tem restricao de dominio (Privacy Settings no Vimeo)
+         - Eles SO funcionam em leozadabjj.com.br
+         - Em qualquer outro dominio/localhost, PrivacyError e ativado
+           e o fallback aparece automaticamente
+         - Para testar localmente, adicionar o dominio de teste
+           nas configuracoes de privacidade de cada video no Vimeo
     ============================================ -->
 
     <!-- Vimeo Player API -->
