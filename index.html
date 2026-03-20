@@ -354,27 +354,9 @@
             <span class="mx-8 text-sm font-bold uppercase tracking-wider">
                 &#9654; Oferta por tempo limitado
             </span>
-            <span class="mx-8 text-sm font-bold uppercase tracking-wider">
-                &#9654; +90 videoaulas disponíveis
-            </span>
-            <span class="mx-8 text-sm font-bold uppercase tracking-wider">
-                &#9654; Garantia de 7 dias
-            </span>
-            <span class="mx-8 text-sm font-bold uppercase tracking-wider">
-                &#9654; Acesso imediato após a compra
-            </span>
             <!-- Duplicado para loop contínuo -->
             <span class="mx-8 text-sm font-bold uppercase tracking-wider">
                 &#9654; Oferta por tempo limitado
-            </span>
-            <span class="mx-8 text-sm font-bold uppercase tracking-wider">
-                &#9654; +90 videoaulas disponíveis
-            </span>
-            <span class="mx-8 text-sm font-bold uppercase tracking-wider">
-                &#9654; Garantia de 7 dias
-            </span>
-            <span class="mx-8 text-sm font-bold uppercase tracking-wider">
-                &#9654; Acesso imediato após a compra
             </span>
         </div>
     </div>
@@ -400,16 +382,15 @@
                 >
             </div>
 
-            <!-- Headline principal - foco na transformacao -->
+            <!-- Headline principal - inverted -->
             <h1 class="text-3xl md:text-5xl lg:text-6xl font-bold uppercase leading-tight mb-6">
-                Ative o <span class="text-accent-500">modo turbo</span> e
-                <span class="text-accent-500">transforme</span> o seu jiu-jítsu em uma
-                <span class="text-accent-500">máquina no tatame</span> em até 2 semanas
+                A chave para evoluir no jiu-jítsu não é <span class="text-accent-500">decorar as posições</span>, mas
+                <span class="text-accent-500">entender os conceitos</span> por trás das técnicas
             </h1>
 
-            <!-- Subheadline - proposta de valor -->
+            <!-- Subheadline - inverted -->
             <p class="text-lg md:text-xl text-gray-300 max-w-2xl mx-auto mb-10">
-                A chave para evoluir no jiu-jítsu não é decorar as posições, mas entender os <strong class="text-white">conceitos por trás das técnicas.</strong>
+                Ative o <strong class="text-accent-500">modo turbo</strong> e <strong class="text-accent-500">transforme</strong> o seu jiu-jítsu em uma <strong class="text-accent-500">máquina no tatame</strong> em até 2 semanas
             </p>
 
             <!-- ============================================
@@ -433,7 +414,7 @@
                         class="absolute top-0 left-0 w-full h-full"
                         title="VSL - Iniciante Turbo"
                     ></iframe>
-                    <!-- Overlay: clique para ativar o som -->
+                    <!-- Overlay: clique para ativar o som + botão de pause -->
                     <div id="unmuteOverlay"
                          class="absolute inset-0 flex items-center justify-center bg-black/60 cursor-pointer z-10 transition-opacity duration-300">
                         <div class="text-center">
@@ -445,6 +426,18 @@
                             <p class="text-white font-bold text-lg md:text-xl">Clique para ativar o som</p>
                         </div>
                     </div>
+                    <!-- Botão de Pause/Play flutuante (aparece após unmute) -->
+                    <button id="vslPlayPauseBtn"
+                            class="absolute bottom-4 left-4 z-20 w-12 h-12 md:w-14 md:h-14 bg-accent-500/80 hover:bg-accent-600 rounded-full flex items-center justify-center text-white transition-all duration-300"
+                            style="display: none;"
+                            title="Pausar/Retomar vídeo">
+                        <svg id="playIcon" class="w-6 h-6 md:w-7 md:h-7" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M8 5v14l11-7z"/>
+                        </svg>
+                        <svg id="pauseIcon" class="w-6 h-6 md:w-7 md:h-7 hidden" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M6 4h4v16H6V4zm8 0h4v16h-4V4z"/>
+                        </svg>
+                    </button>
                     <!-- Fallback: aparece se o Vimeo bloquear por restricao de dominio -->
                     <div id="vslFallback" class="absolute inset-0 bg-brand-700 flex-col items-center justify-center text-center p-8 z-20" style="display:none;">
                         <svg class="w-16 h-16 text-accent-500 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
@@ -1031,13 +1024,13 @@
                             <p class="text-lg text-gray-300">12x de</p>
                             <div class="flex items-start justify-center gap-1">
                                 <span class="text-2xl font-bold text-success mt-2">R$</span>
-                                <span class="text-7xl md:text-8xl font-bold text-success leading-none">15</span>
-                                <span class="text-3xl font-bold text-success mt-1">,20</span>
+                                <span class="text-7xl md:text-8xl font-bold text-success leading-none">10</span>
+                                <span class="text-3xl font-bold text-success mt-1">,03</span>
                             </div>
                         </div>
 
                         <!-- Preco a vista -->
-                        <p class="text-gray-400">Ou <strong class="text-white">R$147,00</strong> à vista</p>
+                        <p class="text-gray-400">Ou <strong class="text-white">R$97,00</strong> à vista</p>
                     </div>
 
                     <!-- CTA principal de compra -->
@@ -1348,10 +1341,53 @@
                             overlay.style.opacity = '0';
                             setTimeout(function() {
                                 overlay.style.display = 'none';
+                                /* Mostra botão de pause/play */
+                                var pauseBtn = document.getElementById('vslPlayPauseBtn');
+                                if (pauseBtn) pauseBtn.style.display = 'flex';
                             }, 300);
                         } catch (err) {
                             console.error('Erro ao ativar o som:', err);
                         }
+                    });
+                }
+
+                /* Botão de Pause/Play customizado (Vimeo API) */
+                var playPauseBtn = document.getElementById('vslPlayPauseBtn');
+                var playIcon = document.getElementById('playIcon');
+                var pauseIcon = document.getElementById('pauseIcon');
+                var isPlaying = true; /* Começa tocando apos unmute */
+
+                if (playPauseBtn) {
+                    playPauseBtn.addEventListener('click', async function(e) {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        try {
+                            if (isPlaying) {
+                                await player.pause();
+                                isPlaying = false;
+                                playIcon.classList.remove('hidden');
+                                pauseIcon.classList.add('hidden');
+                            } else {
+                                await player.play();
+                                isPlaying = true;
+                                playIcon.classList.add('hidden');
+                                pauseIcon.classList.remove('hidden');
+                            }
+                        } catch (err) {
+                            console.error('Erro ao pausar/tocar:', err);
+                        }
+                    });
+
+                    /* Sincroniza estado do botão com o video */
+                    player.on('play', function() {
+                        isPlaying = true;
+                        playIcon.classList.add('hidden');
+                        pauseIcon.classList.remove('hidden');
+                    });
+                    player.on('pause', function() {
+                        isPlaying = false;
+                        playIcon.classList.remove('hidden');
+                        pauseIcon.classList.add('hidden');
                     });
                 }
             }
